@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://co84rj84twgst"]
+
+[ext_resource type="Script" uid="uid://c0a0vm25q7cur" path="res://scripts/evesit.gd" id="1_xuig6"]
+[ext_resource type="Texture2D" uid="uid://w1nlhyvf8ig" path="res://sprites/eve bed/1a391382-283d-4d8e-8ae3-07412f8fc14c.png" id="2_xnqge"]
+[ext_resource type="Texture2D" uid="uid://7yaddjg3adkh" path="res://sprites/eve bed/85ddbba3-faa8-47a7-b355-71f486e7c61f.png" id="3_jebpj"]
+[ext_resource type="Texture2D" uid="uid://bbyuei7gkchit" path="res://sprites/eve bed/86880bf9-a0e9-4b5f-bf2f-38a0a50e716e.png" id="4_uyhqk"]
+[ext_resource type="Texture2D" uid="uid://dga2i8pogcylk" path="res://sprites/eve bed/f3ad733d-3141-45fe-9355-3d150a934aa9.png" id="5_gt36u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8jde5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xnqge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jebpj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_uyhqk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gt36u")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}]
+
+[node name="Eve" type="CharacterBody2D"]
+script = ExtResource("1_xuig6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(532, 522)
+scale = Vector2(0.55, 0.55)
+sprite_frames = SubResource("SpriteFrames_8jde5")
+animation = &"idle"
+frame_progress = 0.6030706

@@ -1,0 +1,155 @@
+[gd_scene load_steps=26 format=3 uid="uid://b3oom2c52q0v0"]
+
+[ext_resource type="Texture2D" uid="uid://br4lidviii24j" path="res://sprites/backgrounds/house ind assets 0.png" id="1_oayo6"]
+[ext_resource type="PackedScene" uid="uid://co84rj84twgst" path="res://scripts/eve.tscn" id="2_7rjan"]
+[ext_resource type="PackedScene" uid="uid://bxvxnt5j24a77" path="res://scripts/magdalene.tscn" id="3_u0ypx"]
+[ext_resource type="Texture2D" uid="uid://bqiso7q4bu72q" path="res://sprites/ui/872d1768-5e99-4b39-930e-2669f7a96549.png" id="13_j7oar"]
+[ext_resource type="Script" uid="uid://bcinba2ixx3sd" path="res://scripts/ui.gd" id="13_swrjp"]
+[ext_resource type="Texture2D" uid="uid://655xcl5w272m" path="res://sprites/ui/b35646f3-7d8b-4f61-8a67-c08b3fc094d9.png" id="14_swrjp"]
+[ext_resource type="Texture2D" uid="uid://b7454argc7ta6" path="res://sprites/backgrounds/table.png" id="17_n47ie"]
+[ext_resource type="Texture2D" uid="uid://cr5lpsp3dbqrx" path="res://sprites/other/2df702a2-2930-4bc0-923e-90651af83329.png" id="20_phn0b"]
+[ext_resource type="Texture2D" uid="uid://5273pxy6ww54" path="res://sprites/other/80208441-1b18-4d1f-9f60-a92196d93b7f.png" id="21_21l0p"]
+[ext_resource type="Texture2D" uid="uid://dkjj1ftslpm71" path="res://sprites/other/cbb5b337-eb61-4d4d-a5a7-c48750a5c14a.png" id="22_ggu1l"]
+[ext_resource type="Texture2D" uid="uid://biw7cueuxw58y" path="res://sprites/other/f0ba391a-9a19-46c5-914a-ab60f8299a75.png" id="23_utn0f"]
+[ext_resource type="Script" uid="uid://ckmoof46h2lkj" path="res://scripts/dog.gd" id="24_pqnja"]
+[ext_resource type="Script" uid="uid://c8h2eup8s445k" path="res://scripts/flute.gd" id="26_21l0p"]
+[ext_resource type="Texture2D" uid="uid://0qag7uqbmum4" path="res://sprites/backgrounds/flute.png" id="27_ggu1l"]
+[ext_resource type="Shader" uid="uid://bju237ie567my" path="res://outline.gdshader" id="27_utn0f"]
+[ext_resource type="Script" uid="uid://h8mle83oe44v" path="res://scripts/stick.gd" id="28_ggu1l"]
+[ext_resource type="Texture2D" uid="uid://dlcynbab8jwpi" path="res://sprites/backgrounds/toiag.png" id="28_utn0f"]
+[ext_resource type="Script" uid="uid://kkfq2s4se4mg" path="res://scripts/door_trigger.gd" id="31_8jde5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ybmu"]
+size = Vector2(1950, 218)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7oar"]
+size = Vector2(142, 1109)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rst2f"]
+size = Vector2(84, 416)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rst2f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_phn0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_21l0p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_ggu1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_utn0f")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8jde5"]
+shader = ExtResource("27_utn0f")
+shader_parameter/outline_width = 1.5
+shader_parameter/outline_color = Vector4(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jde5"]
+size = Vector2(137, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqu1x"]
+size = Vector2(74, 631)
+
+[node name="House" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(959.95715, 541.5)
+scale = Vector2(0.5520494, 0.5420219)
+texture = ExtResource("1_oayo6")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(963, 979)
+shape = SubResource("RectangleShape2D_2ybmu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor"]
+position = Vector2(61, 542)
+shape = SubResource("RectangleShape2D_j7oar")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Floor"]
+position = Vector2(1983, 534)
+shape = SubResource("RectangleShape2D_j7oar")
+
+[node name="Eve" parent="." instance=ExtResource("2_7rjan")]
+
+[node name="Stick" type="Area2D" parent="."]
+script = ExtResource("28_ggu1l")
+
+[node name="Sprite2D" type="Sprite2D" parent="Stick"]
+position = Vector2(1811, 537.00006)
+scale = Vector2(0.5338028, 0.53380287)
+texture = ExtResource("28_utn0f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stick"]
+position = Vector2(1817, 526)
+shape = SubResource("RectangleShape2D_rst2f")
+
+[node name="Magdalene" parent="." instance=ExtResource("3_u0ypx")]
+position = Vector2(119.53, -286.1)
+SPEED = 400.0
+
+[node name="Table" type="Sprite2D" parent="."]
+position = Vector2(803.00006, 872)
+scale = Vector2(0.5193182, 0.5193182)
+texture = ExtResource("17_n47ie")
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("13_swrjp")
+
+[node name="ClosedBasket" type="Sprite2D" parent="UI"]
+position = Vector2(1817.0001, 998)
+scale = Vector2(0.38741413, 0.40199214)
+texture = ExtResource("13_j7oar")
+
+[node name="OpenBasket" type="Sprite2D" parent="UI"]
+visible = false
+position = Vector2(930, 560)
+texture = ExtResource("14_swrjp")
+
+[node name="Dog" type="CharacterBody2D" parent="."]
+script = ExtResource("24_pqnja")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Dog"]
+position = Vector2(1508, 893)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_rst2f")
+animation = &"idle"
+frame_progress = 0.89534456
+
+[node name="Flute" type="Area2D" parent="."]
+script = ExtResource("26_21l0p")
+
+[node name="Sprite2D" type="Sprite2D" parent="Flute"]
+material = SubResource("ShaderMaterial_8jde5")
+position = Vector2(738.00006, 850.99994)
+scale = Vector2(0.4834711, 0.48347107)
+texture = ExtResource("27_ggu1l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flute"]
+position = Vector2(735, 851)
+shape = SubResource("RectangleShape2D_8jde5")
+
+[node name="DoorTrigger" type="Area2D" parent="."]
+script = ExtResource("31_8jde5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorTrigger"]
+position = Vector2(1907, 554.5)
+shape = SubResource("RectangleShape2D_wqu1x")
+
+[connection signal="input_event" from="Stick" to="Stick" method="_on_stick_input_event"]
+[connection signal="mouse_entered" from="Stick" to="Stick" method="_on_stick_mouse_entered"]
+[connection signal="mouse_exited" from="Stick" to="Stick" method="_on_stick_mouse_exited"]
+[connection signal="input_event" from="Flute" to="Flute" method="_on_flute_input_event"]
+[connection signal="mouse_entered" from="Flute" to="Flute" method="_on_flute_mouse_entered"]
+[connection signal="mouse_exited" from="Flute" to="Flute" method="_on_flute_mouse_exited"]
+[connection signal="body_entered" from="DoorTrigger" to="DoorTrigger" method="_on_body_entered"]

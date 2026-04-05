@@ -11,8 +11,18 @@ config_version=5
 [application]
 
 config/name="Eve's Ballad"
+run/main_scene="uid://b3oom2c52q0v0"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://scripts/global.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
 
 [rendering]
 

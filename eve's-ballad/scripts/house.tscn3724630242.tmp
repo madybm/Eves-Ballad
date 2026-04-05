@@ -1,0 +1,113 @@
+[gd_scene load_steps=19 format=3 uid="uid://b3oom2c52q0v0"]
+
+[ext_resource type="Texture2D" uid="uid://b0gjghvcyx1oh" path="res://sprites/backgrounds/52c967be-7b3a-40b5-ac73-b69a8df7bd26.png" id="1_t4ybg"]
+[ext_resource type="Script" uid="uid://bos6dqo02lmi7" path="res://scripts/magdalene.gd" id="2_e5btv"]
+[ext_resource type="Texture2D" uid="uid://kowinaqafu6t" path="res://sprites/mag/86117f4b-e104-4e6b-b00b-219e4bf9503c.png" id="3_g4b44"]
+[ext_resource type="Texture2D" uid="uid://dmv4c4qii6bex" path="res://sprites/mag/77359025-d3a6-4ba8-a5de-6c9e45f5592b.png" id="4_yvcam"]
+[ext_resource type="Texture2D" uid="uid://dv77vops7re44" path="res://sprites/mag/a2ce891f-0f5d-427f-b414-d833cbe7f000.png" id="5_j7oar"]
+[ext_resource type="Texture2D" uid="uid://dwk183l2l6oxp" path="res://sprites/mag/9366b76f-ee3f-49d9-87b3-c5339932ed58.png" id="6_swrjp"]
+[ext_resource type="Texture2D" uid="uid://bpp03imt26dj" path="res://sprites/mag/7dbdfee6-e8d9-48a1-9792-dca07d2615ff.png" id="7_n1ekt"]
+[ext_resource type="Texture2D" uid="uid://618hacigqjm1" path="res://sprites/mag/2fdafffc-e417-46b8-849b-a1816a24b8a1.png" id="8_7rjan"]
+[ext_resource type="Texture2D" uid="uid://f2kwgn2tx5fb" path="res://sprites/mag/952dafe7-b6e4-4b18-a54c-5aaf31688b30.png" id="9_u0ypx"]
+[ext_resource type="Texture2D" uid="uid://b3ingniupxb3v" path="res://sprites/mag/2218ba0e-4b4b-49ba-b10b-4828e068a42a.png" id="10_23mdd"]
+[ext_resource type="Texture2D" uid="uid://cs5uafj8tfu0o" path="res://sprites/mag/f34e612c-5984-40cf-8f7c-243dcfb13209.png" id="11_cq31e"]
+[ext_resource type="Texture2D" uid="uid://ba0kedwt46ma6" path="res://sprites/backgrounds/8bda2a6b-8c47-4bc5-93a6-4a3a4cb0be3c.png" id="12_e5btv"]
+[ext_resource type="Texture2D" uid="uid://bqiso7q4bu72q" path="res://sprites/ui/872d1768-5e99-4b39-930e-2669f7a96549.png" id="13_j7oar"]
+[ext_resource type="Texture2D" uid="uid://655xcl5w272m" path="res://sprites/ui/b35646f3-7d8b-4f61-8a67-c08b3fc094d9.png" id="14_swrjp"]
+[ext_resource type="Script" uid="uid://jurk1bov2uak" path="res://scripts/basket.gd" id="15_n1ekt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ybmu"]
+size = Vector2(1950, 218)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e7f3d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_g4b44")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_yvcam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_j7oar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_swrjp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_n1ekt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7rjan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_u0ypx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_23mdd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cq31e")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pqnja"]
+size = Vector2(112, 422)
+
+[node name="House" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_t4ybg")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(963, 979)
+shape = SubResource("RectangleShape2D_2ybmu")
+
+[node name="Magdalene" type="CharacterBody2D" parent="."]
+position = Vector2(119.53, -286.1)
+scale = Vector2(1.345, 1.345)
+script = ExtResource("2_e5btv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Magdalene"]
+position = Vector2(152.47, 649)
+sprite_frames = SubResource("SpriteFrames_e7f3d")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magdalene"]
+position = Vector2(159.048, 647.059)
+shape = SubResource("RectangleShape2D_pqnja")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("12_e5btv")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Basket" type="TextureButton" parent="UI"]
+offset_left = 1724.9999
+offset_top = 927.0
+offset_right = 2189.0
+offset_bottom = 1296.0
+scale = Vector2(0.39, 0.39)
+texture_normal = ExtResource("13_j7oar")
+texture_pressed = ExtResource("14_swrjp")
+script = ExtResource("15_n1ekt")
+
+[node name="OpenSprite" type="Sprite2D" parent="UI/Basket"]
+visible = false
+position = Vector2(924, 555)
+texture = ExtResource("14_swrjp")
+
+[connection signal="pressed" from="UI/Basket" to="Magdalene" method="_on_basket_pressed"]
