@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1eugrqw8ug27"]
+
+[ext_resource type="Texture2D" uid="uid://bokq1d0xs7o8t" path="res://sprites/backgrounds/forest.layer1.png" id="1_thybf"]
+[ext_resource type="PackedScene" uid="uid://bxvxnt5j24a77" path="res://scripts/magdalene.tscn" id="2_n62g4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5cy6j"]
+size = Vector2(115, 1210)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r22kn"]
+size = Vector2(4018, 253)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6ait"]
+size = Vector2(149, 1252)
+
+[node name="firstforest" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1981.1154, 561)
+scale = Vector2(0.45350006, 0.4536999)
+texture = ExtResource("1_thybf")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(9, 561)
+shape = SubResource("RectangleShape2D_5cy6j")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1942, 1066)
+shape = SubResource("RectangleShape2D_r22kn")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3927, 563)
+shape = SubResource("RectangleShape2D_v6ait")
+
+[node name="Magdalene" parent="." instance=ExtResource("2_n62g4")]
+position = Vector2(-12, 139)
+scale = Vector2(0.935, 0.935)
+SPEED = 300.0
