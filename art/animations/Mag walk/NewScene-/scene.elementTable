@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<elements  source="Harmony Premium (HarmonyPremium.exe) version 25.0.1 build 24106 2025-07-25 03:23:29" version="2501" build="24106" date="Sun Apr 5 23:26:53 2026" timeMsec="1775420813985" username="user" realUsername="user">
+ <element id="5" elementName="walkmaglayers" elementFolder="walkmaglayers" pixmapFormat="2" scanType="2" fieldChart="12" vectorType="2" rootFolder="elements"/>
+ <element id="6" elementName="walkmaglayers" elementFolder="walkmaglayers.6" pixmapFormat="2" scanType="0" fieldChart="12" vectorType="2" rootFolder="elements"/>
+ <element id="7" elementName="Drawing" elementFolder="Drawing.7" pixmapFormat="2" scanType="2" fieldChart="12" vectorType="2" rootFolder="elements"/>
+</elements>
