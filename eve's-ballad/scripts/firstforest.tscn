@@ -1,10 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1eugrqw8ug27"]
+[gd_scene load_steps=17 format=3 uid="uid://c1eugrqw8ug27"]
 
 [ext_resource type="Texture2D" uid="uid://bokq1d0xs7o8t" path="res://sprites/backgrounds/forest.layer1.png" id="1_thybf"]
 [ext_resource type="PackedScene" uid="uid://bxvxnt5j24a77" path="res://scripts/magdalene.tscn" id="2_n62g4"]
 [ext_resource type="Script" uid="uid://bcinba2ixx3sd" path="res://scripts/ui.gd" id="3_r22kn"]
 [ext_resource type="Texture2D" uid="uid://bqiso7q4bu72q" path="res://sprites/ui/872d1768-5e99-4b39-930e-2669f7a96549.png" id="4_v6ait"]
 [ext_resource type="Texture2D" uid="uid://655xcl5w272m" path="res://sprites/ui/b35646f3-7d8b-4f61-8a67-c08b3fc094d9.png" id="5_suvtd"]
+[ext_resource type="Script" uid="uid://bka48whxcd8uy" path="res://scripts/backyard.gd" id="6_v6ait"]
+[ext_resource type="Script" uid="uid://blp3uwbja6par" path="res://scripts/notebook.gd" id="7_5os7y"]
+[ext_resource type="Texture2D" uid="uid://b5dhfxm5layxc" path="res://sprites/ui/bookicon.png" id="7_uem7l"]
+[ext_resource type="Texture2D" uid="uid://nkt0q2ikum40" path="res://sprites/ui/BookTab.png" id="8_icgrp"]
+[ext_resource type="Texture2D" uid="uid://b84ftvsbwkahc" path="res://sprites/ui/InfoButton.png" id="9_5sfn8"]
+[ext_resource type="Texture2D" uid="uid://be7myvps1ghh" path="res://sprites/ui/MusicButton.png" id="10_3wq88"]
+[ext_resource type="Texture2D" uid="uid://b136biwwd4t02" path="res://sprites/ui/QuestButton.png" id="11_hygk2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5cy6j"]
 size = Vector2(115, 1210)
@@ -14,6 +21,9 @@ size = Vector2(4018, 253)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v6ait"]
 size = Vector2(149, 1252)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_suvtd"]
+size = Vector2(180, 1103)
 
 [node name="firstforest" type="Node2D"]
 
@@ -37,8 +47,8 @@ position = Vector2(3927, 563)
 shape = SubResource("RectangleShape2D_v6ait")
 
 [node name="Magdalene" parent="." instance=ExtResource("2_n62g4")]
-position = Vector2(-12, 139)
-scale = Vector2(0.935, 0.935)
+position = Vector2(92.255, 26.94)
+scale = Vector2(1.055, 1.055)
 SPEED = 300.0
 
 [node name="UI" type="CanvasLayer" parent="Magdalene"]
@@ -53,3 +63,97 @@ texture = ExtResource("4_v6ait")
 visible = false
 position = Vector2(930, 560)
 texture = ExtResource("5_suvtd")
+
+[node name="Notebook" type="CanvasLayer" parent="Magdalene/UI"]
+script = ExtResource("7_5os7y")
+
+[node name="NotebookButton" type="TextureButton" parent="Magdalene/UI/Notebook"]
+offset_left = 13.0
+offset_top = 915.0
+offset_right = 313.0
+offset_bottom = 1215.0
+scale = Vector2(0.555, 0.555)
+texture_normal = ExtResource("7_uem7l")
+
+[node name="NotebookPanel" type="TextureRect" parent="Magdalene/UI/Notebook"]
+offset_left = 327.99997
+offset_top = 67.99999
+offset_right = 8191.0
+offset_bottom = 6067.0
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("8_icgrp")
+
+[node name="TabInfo" type="TextureButton" parent="Magdalene/UI/Notebook/NotebookPanel"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 0
+offset_left = 2017.6471
+offset_top = 4717.6465
+offset_right = 3064.706
+offset_bottom = 6258.8228
+texture_normal = ExtResource("9_5sfn8")
+ignore_texture_size = true
+
+[node name="TabMusic" type="TextureButton" parent="Magdalene/UI/Notebook/NotebookPanel"]
+layout_mode = 0
+offset_left = 4258.8237
+offset_top = 4664.706
+offset_right = 5041.1763
+offset_bottom = 5952.941
+texture_normal = ExtResource("10_3wq88")
+ignore_texture_size = true
+
+[node name="TabQuests" type="TextureButton" parent="Magdalene/UI/Notebook/NotebookPanel"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 0
+offset_left = 994.1177
+offset_top = 4676.4697
+offset_right = 1823.5295
+offset_bottom = 6088.2354
+texture_normal = ExtResource("11_hygk2")
+ignore_texture_size = true
+
+[node name="ContentInfo" type="Label" parent="Magdalene/UI/Notebook/NotebookPanel"]
+layout_mode = 0
+offset_left = 2029.4121
+offset_top = 2205.8826
+offset_right = 2232.412
+offset_bottom = 2228.8826
+scale = Vector2(14.52, 14.52)
+text = "Info will be displayed here"
+
+[node name="ContentMusic" type="Label" parent="Magdalene/UI/Notebook/NotebookPanel"]
+visible = false
+layout_mode = 0
+offset_left = 1876.4707
+offset_top = 2194.1177
+offset_right = 2093.4707
+offset_bottom = 2217.1177
+scale = Vector2(15.21, 15.21)
+text = "Music will be displayed here"
+
+[node name="ContentQuests" type="Label" parent="Magdalene/UI/Notebook/NotebookPanel"]
+visible = false
+layout_mode = 0
+offset_left = 2070.5881
+offset_top = 2217.6467
+offset_right = 2296.5881
+offset_bottom = 2240.6467
+scale = Vector2(12.74, 12.74)
+text = "Quests will be displayed here"
+
+[node name="Camera2D" type="Camera2D" parent="Magdalene"]
+position = Vector2(925.51, 448.84)
+limit_left = 0
+limit_top = 0
+limit_right = 3946
+limit_bottom = 1116
+position_smoothing_enabled = true
+
+[node name="Backyard" type="Area2D" parent="."]
+script = ExtResource("6_v6ait")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Backyard"]
+position = Vector2(35, 544)
+shape = SubResource("RectangleShape2D_suvtd")
+
+[connection signal="body_entered" from="Backyard" to="Backyard" method="_on_body_entered"]

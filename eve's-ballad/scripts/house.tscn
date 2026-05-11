@@ -1,11 +1,17 @@
-[gd_scene load_steps=26 format=3 uid="uid://b3oom2c52q0v0"]
+[gd_scene load_steps=32 format=3 uid="uid://b3oom2c52q0v0"]
 
 [ext_resource type="Texture2D" uid="uid://br4lidviii24j" path="res://sprites/backgrounds/house ind assets 0.png" id="1_oayo6"]
 [ext_resource type="PackedScene" uid="uid://co84rj84twgst" path="res://scripts/eve.tscn" id="2_7rjan"]
 [ext_resource type="PackedScene" uid="uid://bxvxnt5j24a77" path="res://scripts/magdalene.tscn" id="3_u0ypx"]
+[ext_resource type="Script" uid="uid://blp3uwbja6par" path="res://scripts/notebook.gd" id="11_n47ie"]
+[ext_resource type="Texture2D" uid="uid://b5dhfxm5layxc" path="res://sprites/ui/bookicon.png" id="12_phn0b"]
+[ext_resource type="Texture2D" uid="uid://nkt0q2ikum40" path="res://sprites/ui/BookTab.png" id="13_21l0p"]
 [ext_resource type="Texture2D" uid="uid://bqiso7q4bu72q" path="res://sprites/ui/872d1768-5e99-4b39-930e-2669f7a96549.png" id="13_j7oar"]
 [ext_resource type="Script" uid="uid://bcinba2ixx3sd" path="res://scripts/ui.gd" id="13_swrjp"]
+[ext_resource type="Texture2D" uid="uid://b84ftvsbwkahc" path="res://sprites/ui/InfoButton.png" id="14_ggu1l"]
 [ext_resource type="Texture2D" uid="uid://655xcl5w272m" path="res://sprites/ui/b35646f3-7d8b-4f61-8a67-c08b3fc094d9.png" id="14_swrjp"]
+[ext_resource type="Texture2D" uid="uid://be7myvps1ghh" path="res://sprites/ui/MusicButton.png" id="15_utn0f"]
+[ext_resource type="Texture2D" uid="uid://b136biwwd4t02" path="res://sprites/ui/QuestButton.png" id="16_8jde5"]
 [ext_resource type="Texture2D" uid="uid://b7454argc7ta6" path="res://sprites/backgrounds/table.png" id="17_n47ie"]
 [ext_resource type="Texture2D" uid="uid://cr5lpsp3dbqrx" path="res://sprites/other/2df702a2-2930-4bc0-923e-90651af83329.png" id="20_phn0b"]
 [ext_resource type="Texture2D" uid="uid://5273pxy6ww54" path="res://sprites/other/80208441-1b18-4d1f-9f60-a92196d93b7f.png" id="21_21l0p"]
@@ -115,6 +121,83 @@ texture = ExtResource("13_j7oar")
 visible = false
 position = Vector2(930, 560)
 texture = ExtResource("14_swrjp")
+
+[node name="Notebook" type="CanvasLayer" parent="UI"]
+script = ExtResource("11_n47ie")
+
+[node name="NotebookButton" type="TextureButton" parent="UI/Notebook"]
+offset_left = 13.0
+offset_top = 915.0
+offset_right = 313.0
+offset_bottom = 1215.0
+scale = Vector2(0.555, 0.555)
+texture_normal = ExtResource("12_phn0b")
+
+[node name="NotebookPanel" type="TextureRect" parent="UI/Notebook"]
+offset_left = 327.99997
+offset_top = 67.99999
+offset_right = 8191.0
+offset_bottom = 6067.0
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("13_21l0p")
+
+[node name="TabInfo" type="TextureButton" parent="UI/Notebook/NotebookPanel"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 0
+offset_left = 2017.6471
+offset_top = 4717.6465
+offset_right = 3064.706
+offset_bottom = 6258.8228
+texture_normal = ExtResource("14_ggu1l")
+ignore_texture_size = true
+
+[node name="TabMusic" type="TextureButton" parent="UI/Notebook/NotebookPanel"]
+layout_mode = 0
+offset_left = 4258.8237
+offset_top = 4664.706
+offset_right = 5041.1763
+offset_bottom = 5952.941
+texture_normal = ExtResource("15_utn0f")
+ignore_texture_size = true
+
+[node name="TabQuests" type="TextureButton" parent="UI/Notebook/NotebookPanel"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 0
+offset_left = 994.1177
+offset_top = 4676.4697
+offset_right = 1823.5295
+offset_bottom = 6088.2354
+texture_normal = ExtResource("16_8jde5")
+ignore_texture_size = true
+
+[node name="ContentInfo" type="Label" parent="UI/Notebook/NotebookPanel"]
+layout_mode = 0
+offset_left = 2029.4121
+offset_top = 2205.8826
+offset_right = 2232.412
+offset_bottom = 2228.8826
+scale = Vector2(14.52, 14.52)
+text = "Info will be displayed here"
+
+[node name="ContentMusic" type="Label" parent="UI/Notebook/NotebookPanel"]
+visible = false
+layout_mode = 0
+offset_left = 1876.4707
+offset_top = 2194.1177
+offset_right = 2093.4707
+offset_bottom = 2217.1177
+scale = Vector2(15.21, 15.21)
+text = "Music will be displayed here"
+
+[node name="ContentQuests" type="Label" parent="UI/Notebook/NotebookPanel"]
+visible = false
+layout_mode = 0
+offset_left = 2070.5881
+offset_top = 2217.6467
+offset_right = 2296.5881
+offset_bottom = 2240.6467
+scale = Vector2(12.74, 12.74)
+text = "Quests will be displayed here"
 
 [node name="Dog" type="CharacterBody2D" parent="."]
 script = ExtResource("24_pqnja")

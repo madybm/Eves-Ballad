@@ -6,6 +6,8 @@ const GRAVITY = 800.0
 @onready var sprite = $AnimatedSprite2D
 
 func _ready():
+	# New scene has loaded, allow triggers to fire again.
+	Global.is_scene_transitioning = false
 	print("Magdalene ready, spawn_position: ", Global.spawn_position)
 	if Global.spawn_position != null:
 		position = Global.spawn_position
@@ -40,4 +42,12 @@ func _physics_process(delta):
 
 
 func _on_basket_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_forest_trigger_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_backyard_body_entered(body: Node2D) -> void:
 	pass # Replace with function body.

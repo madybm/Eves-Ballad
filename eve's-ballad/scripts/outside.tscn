@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cpu4mwhtonyh2"]
+[gd_scene load_steps=21 format=3 uid="uid://cpu4mwhtonyh2"]
 
 [ext_resource type="Texture2D" uid="uid://26wqwtathgul" path="res://sprites/backgrounds/house outside 1.png" id="1_ktd3r"]
 [ext_resource type="Texture2D" uid="uid://h4yaswskigc2" path="res://sprites/backgrounds/bush.png" id="2_i7t71"]
@@ -7,7 +7,14 @@
 [ext_resource type="Script" uid="uid://c3axcjfagicbc" path="res://scripts/door_back_trigger.gd" id="5_e0jrl"]
 [ext_resource type="Script" uid="uid://bcinba2ixx3sd" path="res://scripts/ui.gd" id="6_fye8s"]
 [ext_resource type="Texture2D" uid="uid://bqiso7q4bu72q" path="res://sprites/ui/872d1768-5e99-4b39-930e-2669f7a96549.png" id="7_e0jrl"]
+[ext_resource type="Script" uid="uid://blp3uwbja6par" path="res://scripts/notebook.gd" id="7_t22hb"]
 [ext_resource type="Texture2D" uid="uid://655xcl5w272m" path="res://sprites/ui/b35646f3-7d8b-4f61-8a67-c08b3fc094d9.png" id="8_44sxi"]
+[ext_resource type="Script" uid="uid://lww8evgqywva" path="res://scripts/forest_trigger.gd" id="9_e0jrl"]
+[ext_resource type="Texture2D" uid="uid://b5dhfxm5layxc" path="res://sprites/ui/bookicon.png" id="10_4f7cb"]
+[ext_resource type="Texture2D" uid="uid://nkt0q2ikum40" path="res://sprites/ui/BookTab.png" id="11_4q0xg"]
+[ext_resource type="Texture2D" uid="uid://b84ftvsbwkahc" path="res://sprites/ui/InfoButton.png" id="12_yuynv"]
+[ext_resource type="Texture2D" uid="uid://be7myvps1ghh" path="res://sprites/ui/MusicButton.png" id="13_g0r0n"]
+[ext_resource type="Texture2D" uid="uid://b136biwwd4t02" path="res://sprites/ui/QuestButton.png" id="14_en0an"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_44sxi"]
 size = Vector2(2054, 260.5)
@@ -20,6 +27,9 @@ size = Vector2(131, 1171)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ns6bn"]
 size = Vector2(184.5, 523)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0j1ms"]
+size = Vector2(143.5, 1153)
 
 [node name="Outside" type="Node2D"]
 
@@ -76,4 +86,89 @@ visible = false
 position = Vector2(930, 560)
 texture = ExtResource("8_44sxi")
 
+[node name="Notebook" type="CanvasLayer" parent="UI"]
+script = ExtResource("7_t22hb")
+
+[node name="NotebookButton" type="TextureButton" parent="UI/Notebook"]
+offset_left = 13.0
+offset_top = 915.0
+offset_right = 313.0
+offset_bottom = 1215.0
+scale = Vector2(0.555, 0.555)
+texture_normal = ExtResource("10_4f7cb")
+
+[node name="NotebookPanel" type="TextureRect" parent="UI/Notebook"]
+offset_left = 327.99997
+offset_top = 67.99999
+offset_right = 8191.0
+offset_bottom = 6067.0
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("11_4q0xg")
+
+[node name="TabInfo" type="TextureButton" parent="UI/Notebook/NotebookPanel"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 0
+offset_left = 2017.6471
+offset_top = 4717.6465
+offset_right = 3064.706
+offset_bottom = 6258.8228
+texture_normal = ExtResource("12_yuynv")
+ignore_texture_size = true
+
+[node name="TabMusic" type="TextureButton" parent="UI/Notebook/NotebookPanel"]
+layout_mode = 0
+offset_left = 4258.8237
+offset_top = 4664.706
+offset_right = 5041.1763
+offset_bottom = 5952.941
+texture_normal = ExtResource("13_g0r0n")
+ignore_texture_size = true
+
+[node name="TabQuests" type="TextureButton" parent="UI/Notebook/NotebookPanel"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 0
+offset_left = 994.1177
+offset_top = 4676.4697
+offset_right = 1823.5295
+offset_bottom = 6088.2354
+texture_normal = ExtResource("14_en0an")
+ignore_texture_size = true
+
+[node name="ContentInfo" type="Label" parent="UI/Notebook/NotebookPanel"]
+layout_mode = 0
+offset_left = 2029.4121
+offset_top = 2205.8826
+offset_right = 2232.412
+offset_bottom = 2228.8826
+scale = Vector2(14.52, 14.52)
+text = "Info will be displayed here"
+
+[node name="ContentMusic" type="Label" parent="UI/Notebook/NotebookPanel"]
+visible = false
+layout_mode = 0
+offset_left = 1876.4707
+offset_top = 2194.1177
+offset_right = 2093.4707
+offset_bottom = 2217.1177
+scale = Vector2(15.21, 15.21)
+text = "Music will be displayed here"
+
+[node name="ContentQuests" type="Label" parent="UI/Notebook/NotebookPanel"]
+visible = false
+layout_mode = 0
+offset_left = 2070.5881
+offset_top = 2217.6467
+offset_right = 2296.5881
+offset_bottom = 2240.6467
+scale = Vector2(12.74, 12.74)
+text = "Quests will be displayed here"
+
+[node name="ForestTrigger" type="Area2D" parent="."]
+script = ExtResource("9_e0jrl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForestTrigger"]
+position = Vector2(1934.25, 524)
+shape = SubResource("RectangleShape2D_0j1ms")
+
 [connection signal="body_entered" from="DoorBackTrigger" to="DoorBackTrigger" method="_on_body_entered"]
+[connection signal="body_entered" from="ForestTrigger" to="ForestTrigger" method="_on_body_entered"]
